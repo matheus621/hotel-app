@@ -3,4 +3,13 @@
     <string name="email">E-mail</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="nome_do_hotel">Nome do Hotel</string>
+    <string name="endereco">Endereço</string>
+    <string name="error_hotel_not_found">Hotel não encontrado</string>
+
+    <string name="action_search">Pesquisar</string>
+    <string name="action_new_hotel">Novo Hotel</string>
+    <string name="action_info">Info</string>
+    <string name="hint_search">Procurar por Hotel</string>
+
 </resources>
