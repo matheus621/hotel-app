@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
             if (edtEmail.equals("") || edtPassword.equals("")) {
                 Toast.makeText(this, "Favor informar o email e/ou senha!", Toast.LENGTH_LONG).show()
             } else {
-                val intent = Intent
+
             }
         })
 
