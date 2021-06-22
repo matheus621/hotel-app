@@ -21,7 +21,8 @@ class HotelDetailsActivity : AppCompatActivity() {
         val fragment = HotelDetailsFragment.newInstance(hotelId)
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.details, fragment, HotelDetailsFragment.TAG_DETAILS).commit()
+            .replace(R.id.details, fragment, HotelDetailsFragment.TAG_DETAILS)
+            .commit()
     }
 
     companion object {
