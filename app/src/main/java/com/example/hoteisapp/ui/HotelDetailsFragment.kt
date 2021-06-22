@@ -17,12 +17,9 @@ class HotelDetailsFragment : Fragment(), HotelDetailsView {
     private val presenter = HotelDetailsPresenter(this, MemoryRepository)
     private var hotel: Hotel? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_details_hotel, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
