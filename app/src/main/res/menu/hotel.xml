@@ -7,15 +7,5 @@
         android:title="@string/action_search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|ifRoom" />
-    <item
-        android:id="@+id/action_new"
-        android:icon="@drawable/ic_menu_add"
-        android:title="@string/action_new_hotel"
-        app:showAsAction="ifRoom|withText" />
-    <item
-        android:id="@+id/action_edit"
-        android:icon="@drawable/ic_update"
-        android:title="@string/action_edit"
-        app:showAsAction="always|withText" />
 
 </menu>

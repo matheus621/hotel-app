@@ -10,6 +10,7 @@ import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import com.example.hoteisapp.R
 import com.example.hoteisapp.model.Hotel
+import kotlinx.android.synthetic.main.activity_hotel.*
 
 class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListener,
     SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener,
@@ -26,6 +27,10 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hotel)
+
+        buttonAdd.setOnClickListener {
+            HotelFormFragment.newInstance().open(supportFragmentManager)
+        }
     }
 
     override fun onHotelClick(hotel: Hotel) {
@@ -66,10 +71,6 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item?.itemId) {
-            R.id.action_new ->
-                HotelFormFragment.newInstance().open(supportFragmentManager)
-        }
         return super.onOptionsItemSelected(item)
     }
 
