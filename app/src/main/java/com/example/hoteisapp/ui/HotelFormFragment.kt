@@ -61,7 +61,6 @@ class HotelFormFragment : DialogFragment(), HotelFormView {
                     val listener = activity as OnHotelSavedListener
                     listener.onHotelSaved(hotel)
                 }
-                // Feche o dialog
                 dialog?.dismiss()
                 return true
             }

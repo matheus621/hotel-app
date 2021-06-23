@@ -10,7 +10,8 @@ import com.example.hoteisapp.R
 import com.example.hoteisapp.model.Hotel
 
 class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListener,
-    SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener, HotelFormFragment.OnHotelSavedListener {
+    SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener,
+    HotelFormFragment.OnHotelSavedListener {
 
     private var lastSearchTerm: String = ""
     private var searchView: SearchView? = null
@@ -34,13 +35,12 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
         lastSearchTerm = savedInstanceState.getString(EXTRA_SEARCH_TERM) ?: ""
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
         menuInflater.inflate(R.menu.hotel, menu)
-        val searchItem = menu?.findItem(R.id.action_search)
-        searchItem?.setOnActionExpandListener(this)
-        searchView = searchItem?.actionView as SearchView
+        val searchItem = menu.findItem(R.id.action_search)
+        searchItem.setOnActionExpandListener(this)
+        searchView = searchItem.actionView as SearchView
         searchView?.queryHint = getString(R.string.hint_search)
         searchView?.setOnQueryTextListener(this)
         if (lastSearchTerm.isNotEmpty()) {
@@ -54,10 +54,9 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
         return true
     }
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
-            R.id.action_info ->
+            R.id.action_new ->
                 HotelFormFragment.newInstance().open(supportFragmentManager)
         }
         return super.onOptionsItemSelected(item)
@@ -85,7 +84,7 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
 
     override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
         lastSearchTerm = ""
-        listFragment.clearSearch() // para voltar ao normal
+        listFragment.clearSearch()
         return true
     }
 

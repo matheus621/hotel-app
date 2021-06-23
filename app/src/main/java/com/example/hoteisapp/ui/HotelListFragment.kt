@@ -2,6 +2,7 @@ package com.example.hoteisapp.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Adapter
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.fragment.app.ListFragment
@@ -19,7 +20,7 @@ class HotelListFragment: ListFragment(), HotelListView {
     }
 
     override fun showHotels(hotels: List<Hotel>) {
-        val adapter = ArrayAdapter<Hotel>(requireContext(), android.R.layout.simple_list_item_1, hotels)
+        val adapter = com.example.hoteisapp.Adapter(requireContext(),hotels)
         listAdapter = adapter
     }
 
