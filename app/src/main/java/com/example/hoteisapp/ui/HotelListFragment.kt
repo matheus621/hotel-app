@@ -1,18 +1,22 @@
 package com.example.hoteisapp.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Adapter
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.fragment.app.ListFragment
+import com.example.hoteisapp.database.SQLiteRepository
 import com.example.hoteisapp.model.Hotel
 import com.example.hoteisapp.presenter.HotelListPresenter
+import com.example.hoteisapp.repository.HotelRepository
 import com.example.hoteisapp.repository.MemoryRepository
 import com.example.hoteisapp.view.HotelListView
+import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelListFragment: ListFragment(), HotelListView {
-    private val presenter = HotelListPresenter(this, MemoryRepository)
+    private val presenter: HotelListPresenter by inject { parametersOf(this) }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

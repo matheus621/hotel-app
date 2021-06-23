@@ -12,12 +12,13 @@ import androidx.fragment.app.FragmentManager
 import com.example.hoteisapp.R
 import com.example.hoteisapp.model.Hotel
 import com.example.hoteisapp.presenter.HotelFormPresenter
-import com.example.hoteisapp.repository.MemoryRepository
 import com.example.hoteisapp.view.HotelFormView
 import kotlinx.android.synthetic.main.fragment_hotel_form.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelFormFragment : DialogFragment(), HotelFormView {
-    private val presenter = HotelFormPresenter(this, MemoryRepository)
+    private val presenter: HotelFormPresenter by inject { parametersOf(this) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -8,13 +8,14 @@ import androidx.fragment.app.Fragment
 import com.example.hoteisapp.R
 import com.example.hoteisapp.model.Hotel
 import com.example.hoteisapp.presenter.HotelDetailsPresenter
-import com.example.hoteisapp.repository.MemoryRepository
 import com.example.hoteisapp.view.HotelDetailsView
 import kotlinx.android.synthetic.main.fragment_details_hotel.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelDetailsFragment : Fragment(), HotelDetailsView {
 
-    private val presenter = HotelDetailsPresenter(this, MemoryRepository)
+    private val presenter: HotelDetailsPresenter by inject { parametersOf(this) }
     private var hotel: Hotel? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

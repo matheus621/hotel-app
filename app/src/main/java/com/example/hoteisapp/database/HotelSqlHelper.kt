@@ -3,7 +3,6 @@ package com.example.hoteisapp.database
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.hoteisapp.database.*
 
 class HotelSqlHelper(context: Context) :
     SQLiteOpenHelper(context,
