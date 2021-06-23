@@ -2,6 +2,7 @@ package com.example.hoteisapp.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -39,6 +40,15 @@ class HotelDetailsFragment : Fragment(), HotelDetailsView {
         txtName.text = getString(R.string.error_hotel_not_found)
         txtAddress.visibility = View.GONE
         rtbRating.visibility = View.GONE
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_edit){
+            HotelFormFragment
+                .newInstance(hotel?.id?: 0)
+                .open(requireFragmentManager())
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

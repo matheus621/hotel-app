@@ -13,9 +13,9 @@
         android:title="@string/action_new_hotel"
         app:showAsAction="ifRoom|withText" />
     <item
-        android:id="@+id/action_info"
-        android:icon="@drawable/ic_menu_info_details"
-        android:title="@string/action_info"
-        app:showAsAction="never" />
+        android:id="@+id/action_edit"
+        android:icon="@drawable/ic_update"
+        android:title="@string/action_edit"
+        app:showAsAction="always|withText" />
 
 </menu>

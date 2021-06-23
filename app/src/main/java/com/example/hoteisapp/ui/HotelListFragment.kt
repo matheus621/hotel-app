@@ -89,7 +89,7 @@ class HotelListFragment : ListFragment(), HotelListView, AdapterView.OnItemLongC
 
     override fun onListItemClick(l: ListView, v: View, position: Int, id: Long) {
         super.onListItemClick(l, v, position, id)
-        val hotel = l?.getItemAtPosition(position) as Hotel
+        val hotel = l.getItemAtPosition(position) as Hotel
         presenter.selectHotel(hotel)
     }
 
