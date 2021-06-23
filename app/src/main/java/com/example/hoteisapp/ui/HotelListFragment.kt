@@ -30,6 +30,27 @@ class HotelListFragment: ListFragment(), HotelListView {
         }
     }
 
+    override fun showDeleteMode() {
+        TODO("Not yet implemented")
+    }
+
+    override fun hideDeleteMode() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showSelectedHotels(hotels: List<Hotel>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateSelectionCountText(count: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showMessageHotelsDeleted(count: Int) {
+        TODO("Not yet implemented")
+    }
+
+
     override fun onListItemClick(l: ListView, v: View, position: Int, id: Long) {
         super.onListItemClick(l, v, position, id)
         val hotel = l?.getItemAtPosition(position) as Hotel

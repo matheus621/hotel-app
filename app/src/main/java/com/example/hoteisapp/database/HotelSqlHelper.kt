@@ -1,11 +1,15 @@
-package com.example.hoteisapp.repository.sqlite
+package com.example.hoteisapp.database
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.hoteisapp.database.*
 
 class HotelSqlHelper(context: Context) :
-    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+    SQLiteOpenHelper(context,
+        DATABASE_NAME, null,
+        DATABASE_VERSION
+    ) {
 
     override fun onCreate(sqLiteDatabase: SQLiteDatabase) {
         sqLiteDatabase.execSQL(

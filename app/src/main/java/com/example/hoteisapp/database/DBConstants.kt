@@ -1,4 +1,4 @@
-package com.example.hoteisapp.repository.sqlite
+package com.example.hoteisapp.database
 
 const val DATABASE_NAME = "dbHotel"
 const val DATABASE_VERSION = 1

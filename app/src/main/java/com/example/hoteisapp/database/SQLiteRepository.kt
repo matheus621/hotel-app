@@ -1,4 +1,4 @@
-package com.example.hoteisapp.repository.sqlite
+package com.example.hoteisapp.database
 
 import android.content.ContentValues
 import android.content.Context
@@ -8,7 +8,8 @@ import com.example.hoteisapp.model.Hotel
 import com.example.hoteisapp.repository.HotelRepository
 
 class SQLiteRepository(ctx: Context) : HotelRepository {
-    private val helper: HotelSqlHelper = HotelSqlHelper(ctx)
+    private val helper: HotelSqlHelper =
+        HotelSqlHelper(ctx)
 
     private fun insert(hotel: Hotel) {
         val db = helper.writableDatabase

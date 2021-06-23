@@ -1,5 +1,6 @@
 package com.example.hoteisapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,18 +13,28 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val edtEmail = edtEmail
-        val edtPassword = edtPassword
-
         val buttonLogin = buttonLogin
 
         buttonLogin.setOnClickListener(View.OnClickListener {
-            if (edtEmail.equals("") || edtPassword.equals("")) {
-                Toast.makeText(this, "Favor informar o email e/ou senha!", Toast.LENGTH_LONG).show()
-            } else {
-
+            when {
+                edtEmail.text.toString().isEmpty() || edtPassword.text.toString().isEmpty() -> {
+                    Toast.makeText(this, "Favor informar o email e/ou senha!", Toast.LENGTH_LONG).show()
+                }
+                edtEmail.text.toString() == EMAIL && edtPassword.text.toString() == PASSWORD -> {
+                    val intent = Intent(this, HotelActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                edtEmail.text.toString() != EMAIL || edtPassword.text.toString() != PASSWORD -> {
+                    Toast.makeText(this, "Favor informar o email e/ou senha CORRETOS!", Toast.LENGTH_LONG).show()
+                }
             }
         })
 
+    }
+
+    companion object {
+        private const val EMAIL = "admin@admin.com"
+        private const val PASSWORD = "admin123"
     }
 }

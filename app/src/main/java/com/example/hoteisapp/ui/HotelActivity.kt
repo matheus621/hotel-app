@@ -10,7 +10,7 @@ import com.example.hoteisapp.R
 import com.example.hoteisapp.model.Hotel
 
 class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListener,
-    SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener {
+    SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener, HotelFormFragment.OnHotelSavedListener {
 
     private var lastSearchTerm: String = ""
     private var searchView: SearchView? = null
@@ -54,7 +54,12 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
         return true
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            R.id.action_info ->
+                HotelFormFragment.newInstance().open(supportFragmentManager)
+        }
         return super.onOptionsItemSelected(item)
     }
 
@@ -86,5 +91,9 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
 
     companion object {
         const val EXTRA_SEARCH_TERM = "lastSearch"
+    }
+
+    override fun onHotelSaved(hotel: Hotel) {
+        listFragment.search(lastSearchTerm)
     }
 }

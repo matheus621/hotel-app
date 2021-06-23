@@ -34,7 +34,6 @@ class HotelFormFragment : DialogFragment(), HotelFormView {
             handleKeyboardEvent(i)
         }
         dialog?.setTitle(R.string.action_new_hotel)
-        // Abre o teclado virtual ao exibir o Dialog
         dialog?.window?.setSoftInputMode(
             WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE
         )
