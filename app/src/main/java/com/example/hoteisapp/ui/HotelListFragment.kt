@@ -5,7 +5,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
@@ -13,6 +12,7 @@ import androidx.fragment.app.ListFragment
 import com.example.hoteisapp.Adapter
 import com.example.hoteisapp.R
 import com.example.hoteisapp.model.Hotel
+import com.example.hoteisapp.presenter.HotelDetailsPresenter
 import com.example.hoteisapp.presenter.HotelListPresenter
 import com.example.hoteisapp.view.HotelListView
 import com.google.android.material.snackbar.Snackbar
@@ -24,9 +24,12 @@ class HotelListFragment : ListFragment(), HotelListView, AdapterView.OnItemLongC
     private var actionMode: ActionMode? = null
     private val presenter: HotelListPresenter by inject { parametersOf(this) }
 
+    private val presenterEdit: HotelDetailsPresenter by inject { parametersOf(this) }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         presenter.searchHotels("")
+        presenterEdit.loadHotelDetails(arguments?.getLong(HotelDetailsFragment.EXTRA_HOTEL_ID, -1) ?: -1)
         listView.onItemLongClickListener = this
     }
 
@@ -126,8 +129,10 @@ class HotelListFragment : ListFragment(), HotelListView, AdapterView.OnItemLongC
             presenter.deleteSelected { hotels ->
                 if (activity is OnHotelDeleteListener) {
                     (activity as OnHotelDeleteListener).onHotelsDeleted(hotels)
+
                 }
             }
+
         }
         return true
     }
@@ -146,5 +151,20 @@ class HotelListFragment : ListFragment(), HotelListView, AdapterView.OnItemLongC
 
     interface OnHotelDeleteListener {
         fun onHotelsDeleted(hotels: List<Hotel>)
+    }
+
+    interface OnHotelEditListiner{
+        fun onHotelEdit(hotel: Hotel)
+    }
+
+    companion object {
+        private const val EXTRA_HOTEL_ID = "hotelId"
+        fun newInstance(id: Long) = HotelDetailsFragment().apply {
+            arguments = Bundle().apply {
+                putLong(
+                    EXTRA_HOTEL_ID, id
+                )
+            }
+        }
     }
 }

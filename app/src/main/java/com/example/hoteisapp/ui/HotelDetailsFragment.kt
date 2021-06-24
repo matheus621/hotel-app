@@ -1,10 +1,9 @@
 package com.example.hoteisapp.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.ShareActionProvider
+import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
 import com.example.hoteisapp.R
 import com.example.hoteisapp.model.Hotel
@@ -19,8 +18,10 @@ class HotelDetailsFragment : Fragment(), HotelDetailsView {
     private val presenter: HotelDetailsPresenter by inject { parametersOf(this) }
     private var hotel: Hotel? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_details_hotel, container, false)
     }
 
@@ -42,18 +43,13 @@ class HotelDetailsFragment : Fragment(), HotelDetailsView {
         rtbRating.visibility = View.GONE
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_edit){
-            HotelFormFragment
-                .newInstance(hotel?.id?: 0)
-                .open(requireFragmentManager())
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//
+//    }
 
     companion object {
         const val TAG_DETAILS = "tagDetalhe"
-        private const val EXTRA_HOTEL_ID = "hotelId"
+        const val EXTRA_HOTEL_ID = "hotelId"
         fun newInstance(id: Long) = HotelDetailsFragment().apply {
             arguments = Bundle().apply {
                 putLong(

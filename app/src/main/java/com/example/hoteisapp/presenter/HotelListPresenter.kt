@@ -76,6 +76,8 @@ class HotelListPresenter(
         hideDeleteMode()
         view.showMessageHotelsDeleted(deletedItems.size)
     }
+
+
     fun undoDelete() {
         if (deletedItems.isNotEmpty()) {
             for (hotel in deletedItems) {

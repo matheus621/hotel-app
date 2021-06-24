@@ -10,7 +10,10 @@ import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import com.example.hoteisapp.R
 import com.example.hoteisapp.model.Hotel
+import com.example.hoteisapp.presenter.HotelDetailsPresenter
 import kotlinx.android.synthetic.main.activity_hotel.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListener,
     SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener,
@@ -19,6 +22,7 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
     private var lastSearchTerm: String = ""
     private var searchView: SearchView? = null
     private var hotelIdSelected: Long = -1
+    private var hotel: Hotel? = null
 
     private val listFragment: HotelListFragment by lazy {
         supportFragmentManager.findFragmentById(R.id.fragmentList) as HotelListFragment
@@ -71,6 +75,11 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_edit) {
+            HotelFormFragment
+                .newInstance(hotel?.id ?: 0)
+                .open(supportFragmentManager)
+        }
         return super.onOptionsItemSelected(item)
     }
 
@@ -95,19 +104,21 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
         listFragment.clearSearch()
         return true
     }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 0 && resultCode == RESULT_OK){
+            listFragment.search(lastSearchTerm)
+        }
+    }
+
     override fun onHotelSaved(hotel: Hotel) {
         listFragment.search(lastSearchTerm)
         val detailsFragment = supportFragmentManager
             .findFragmentByTag(HotelDetailsFragment.TAG_DETAILS) as? HotelDetailsFragment
         if (detailsFragment != null && hotel.id == hotelIdSelected ){
             showDetailsActivity(hotelIdSelected)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 0 && resultCode == Activity.RESULT_OK){
-            listFragment.search(lastSearchTerm)
         }
     }
 
