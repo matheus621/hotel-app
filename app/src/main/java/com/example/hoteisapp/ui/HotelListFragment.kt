@@ -24,17 +24,14 @@ class HotelListFragment : ListFragment(), HotelListView, AdapterView.OnItemLongC
     private var actionMode: ActionMode? = null
     private val presenter: HotelListPresenter by inject { parametersOf(this) }
 
-    private val presenterEdit: HotelDetailsPresenter by inject { parametersOf(this) }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         presenter.searchHotels("")
-       // presenterEdit.loadHotelDetails(arguments?.getLong(HotelDetailsFragment.EXTRA_HOTEL_ID, -1) ?: -1)
         listView.onItemLongClickListener = this
     }
 
     override fun showHotels(hotels: List<Hotel>) {
-        val adapter = Adapter(requireContext(),hotels)
+        val adapter = Adapter(requireContext(), hotels)
         listAdapter = adapter
     }
 
@@ -80,9 +77,11 @@ class HotelListFragment : ListFragment(), HotelListView, AdapterView.OnItemLongC
     }
 
     override fun showMessageHotelsDeleted(count: Int) {
-        Snackbar.make(listView,
+        Snackbar.make(
+            listView,
             getString(R.string.message_hotels_deleted, count),
-            Snackbar.LENGTH_LONG)
+            Snackbar.LENGTH_LONG
+        )
             .setAction(R.string.undo) {
                 presenter.undoDelete()
             }
@@ -129,7 +128,6 @@ class HotelListFragment : ListFragment(), HotelListView, AdapterView.OnItemLongC
             presenter.deleteSelected { hotels ->
                 if (activity is OnHotelDeleteListener) {
                     (activity as OnHotelDeleteListener).onHotelsDeleted(hotels)
-
                 }
             }
 
@@ -151,10 +149,6 @@ class HotelListFragment : ListFragment(), HotelListView, AdapterView.OnItemLongC
 
     interface OnHotelDeleteListener {
         fun onHotelsDeleted(hotels: List<Hotel>)
-    }
-
-    interface OnHotelEditListiner{
-        fun onHotelEdit(hotel: Hotel)
     }
 
     companion object {

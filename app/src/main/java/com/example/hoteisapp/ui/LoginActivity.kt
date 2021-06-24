@@ -36,6 +36,6 @@ class LoginActivity : AppCompatActivity() {
 
     companion object {
         private const val EMAIL = "admin@admin.com"
-        private const val PASSWORD = "admin123"
+        private const val PASSWORD = "admin"
     }
 }

@@ -22,6 +22,7 @@
         <item quantity="other">%d selecionados</item>
     </plurals>
 
+    <string name="action_share">Compartilhar</string>
     <string name="message_hotels_deleted">%d itens excluídos.</string>
     <string name="undo">Desfazer</string>
 
