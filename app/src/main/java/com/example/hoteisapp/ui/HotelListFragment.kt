@@ -29,7 +29,7 @@ class HotelListFragment : ListFragment(), HotelListView, AdapterView.OnItemLongC
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         presenter.searchHotels("")
-        presenterEdit.loadHotelDetails(arguments?.getLong(HotelDetailsFragment.EXTRA_HOTEL_ID, -1) ?: -1)
+       // presenterEdit.loadHotelDetails(arguments?.getLong(HotelDetailsFragment.EXTRA_HOTEL_ID, -1) ?: -1)
         listView.onItemLongClickListener = this
     }
 

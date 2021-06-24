@@ -74,14 +74,14 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_edit) {
-            HotelFormFragment
-                .newInstance(hotel?.id ?: 0)
-                .open(supportFragmentManager)
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if (item.itemId == R.id.action_edit) {
+//            HotelFormFragment
+//                .newInstance(hotel?.id ?: 0)
+//                .open(supportFragmentManager)
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
 
     private fun showDetailsActivity(hotelId: Long) {
