@@ -5,6 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imagemHotel"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:background="@drawable/hotel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@id/txtName"
+        app:layout_constraintVertical_chainStyle="packed" />
+
     <TextView
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
@@ -14,8 +27,7 @@
         app:layout_constraintBottom_toTopOf="@id/txtAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintTop_toBottomOf="@+id/imagemHotel" />
 
     <TextView
         android:id="@+id/txtAddress"

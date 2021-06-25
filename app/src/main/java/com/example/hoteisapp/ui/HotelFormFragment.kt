@@ -75,6 +75,7 @@ class HotelFormFragment : DialogFragment(), HotelFormView {
         hotel.id = hotelId
         hotel.name = edtName.text.toString()
         hotel.address = edtAddress.text.toString()
+        //hotel.imageUrl = edtImage
         hotel.rating = rtbRating.rating
         if (presenter.saveHotel(hotel)) {
             return hotel
@@ -92,6 +93,7 @@ class HotelFormFragment : DialogFragment(), HotelFormView {
     interface OnHotelSavedListener {
         fun onHotelSaved(hotel: Hotel)
     }
+
 
     companion object {
         private const val DIALOG_TAG = "editDialog"
